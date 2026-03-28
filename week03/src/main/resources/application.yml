@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+
+
+
+
+
+
+#server:
+#  port: 8080
+#  servlet:
+## 设置项目路径(上下文)
+#    context-path: /api
+#
+#spring:
+#  application:
+#    name: springboot-week03
+#
+## 自定义配置
+#app:
+#  name: 企业后台管理系统
+#  version: 2.0.0
+#  description: Spring Boot 实战项目
+
