@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zrwang.week05.mapper.UserMapper">
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="top.zrwang.week05.entity.User">
+        INSERT INTO t_user (username, password, age, email, create_time)
+        VALUES (#{username}, #{password}, #{age}, #{email}, #{createTime})
+    </insert>
+
+    <!-- 根据ID查询 -->
+    <select id="selectByPrimaryKey" resultType="top.zrwang.week05.entity.User">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="selectList" resultType="top.zrwang.week05.entity.User">
+        SELECT * FROM t_user
+    </select>
+
+    <!-- 更新 -->
+    <update id="updateByPrimaryKey" parameterType="top.zrwang.week05.entity.User">
+        UPDATE t_user
+        SET username=#{username}, password=#{password}, age=#{age}, email=#{email}, create_time=#{createTime}
+        WHERE id=#{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteByPrimaryKey">
+        DELETE FROM t_user WHERE id=#{id}
+    </delete>
+
+    <!-- 复杂条件查询（动态SQL） -->
+    <select id="selectByComplexCondition" resultType="top.zrwang.week05.entity.User">
+        SELECT * FROM t_user
+        <where>
+            <if test="username != null and username != ''">
+                AND username LIKE CONCAT('%', #{username}, '%')
+            </if>
+            <if test="minAge != null">
+                AND age >= #{minAge}
+            </if>
+        </where>
+    </select>
+
+</mapper>

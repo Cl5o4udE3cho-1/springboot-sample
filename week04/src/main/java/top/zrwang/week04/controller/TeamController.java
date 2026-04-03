@@ -34,7 +34,7 @@ public class TeamController {
         }
 
         // 3. 成功返回
-        int a = 1/0;
+//        int a = 1/0;
         return Result.success("添加成功");
     }
 }
